@@ -842,7 +842,8 @@ module Resque
     end
 
     def verbose=(value);
-      p "Resque: 'verbose=' verbose=#{value}, very_verbose=#{very_verbose}"
+      puts "\n >> Resque verbose=#{value.inspect}"
+      puts caller.map { |s| " >> #{s}" }.join("\n")
       if value && !very_verbose
         Resque.logger.formatter = VerboseFormatter.new
         Resque.logger.level = Logger::INFO
@@ -854,7 +855,8 @@ module Resque
     end
 
     def very_verbose=(value)
-      p "Resque: 'very_verbose=' very_verbose=#{value}, verbose=#{verbose}"
+      puts "\n >> Resque very_verbose=#{value.inspect}"
+      puts caller.map { |s| " >> #{s}" }.join("\n")
       if value
         Resque.logger.formatter = VeryVerboseFormatter.new
         Resque.logger.level = Logger::DEBUG
