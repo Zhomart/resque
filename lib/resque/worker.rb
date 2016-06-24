@@ -842,6 +842,7 @@ module Resque
     end
 
     def verbose=(value);
+      p "Resque: 'verbose=' verbose=#{value}, very_verbose=#{very_verbose}"
       if value && !very_verbose
         Resque.logger.formatter = VerboseFormatter.new
         Resque.logger.level = Logger::INFO
@@ -853,6 +854,7 @@ module Resque
     end
 
     def very_verbose=(value)
+      p "Resque: 'very_verbose=' very_verbose=#{value}, verbose=#{verbose}"
       if value
         Resque.logger.formatter = VeryVerboseFormatter.new
         Resque.logger.level = Logger::DEBUG

@@ -574,6 +574,8 @@ module Resque
   end
 end
 
+p "Resque: before doing Resque.logger"
 # Log to STDOUT by default
 Resque.logger           = MonoLogger.new(STDOUT)
-Resque.logger.formatter = Resque::QuietFormatter.new
+a = Resque.logger.formatter = Resque::QuietFormatter.new
+p "Resque: After doing Resque.logger: formatter=#{a}"
