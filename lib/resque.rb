@@ -574,8 +574,9 @@ module Resque
   end
 end
 
-p "Resque: before doing Resque.logger"
+puts "- Resque: before doing Resque.logger"
+puts "- Resque thread=#{Thread.current}"
 # Log to STDOUT by default
 Resque.logger           = MonoLogger.new(STDOUT)
 a = Resque.logger.formatter = Resque::QuietFormatter.new
-p "Resque: After doing Resque.logger: formatter=#{a}"
+p "- Resque: After doing Resque.logger: formatter=#{a}"
